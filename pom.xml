@@ -4,7 +4,7 @@
 
     <groupId>org.compacto.parser</groupId>
     <artifactId>lib-compacto-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>lib-compacto-java</name>
     <url>https://compacto.org</url>
@@ -56,7 +56,7 @@
         <developerConnection>
             scm:git:git@github.com:ailton-amorim/lib-compacto-java.git
         </developerConnection>
-      <tag>lib-compacto-java-1.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
