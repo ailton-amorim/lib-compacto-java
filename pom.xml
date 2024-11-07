@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.compacto.parser</groupId>
@@ -12,10 +14,16 @@
 
     <developers>
         <developer>
-            <name>Ailton Francisco da Silva Amorim</name>
+            <name>Ailton Franciscoda Silva Amorim</name>
             <email>ailtonfcodasilvaamorim@outlook.com</email>
         </developer>
     </developers>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,11 +61,10 @@
     </dependencies>
 
     <scm>
-        <developerConnection>
-            scm:git:git@github.com:ailton-amorim/lib-compacto-java.git
-        </developerConnection>
-      <tag>lib-compacto-java-1.0.0</tag>
-  </scm>
+        <connection>scm:git:git://github.com/ailton-amorim/lib-compacto-java.git</connection>
+        <developerConnection>scm:git:ssh://github.com/ailton-amorim/lib-compacto-java.git</developerConnection>
+        <url>https://github.com/ailton-amorim/lib-compacto-java/tree/main</url>
+    </scm>
 
     <build>
         <plugins>
@@ -76,7 +83,6 @@
                 </configuration>
             </plugin>
 
-
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -85,7 +91,8 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
 
-                    <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+                    <statelessTestsetReporter
+                        implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
                         <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
                     </statelessTestsetReporter>
                 </configuration>
@@ -112,7 +119,42 @@
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
+                    <checksums>required</checksums>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.1</version>
+                <configuration>
+                    <show>public</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-docs</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
